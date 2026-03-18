@@ -45,7 +45,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f1f5f9;
+      background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 40%, #ede9fe 100%);
+      background-attachment: fixed;
       color: #1e293b;
     }
 
@@ -109,8 +110,8 @@
 
     /* ---- Cards ---- */
     .card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 1rem;
       border-left: 4px solid transparent;
       transition: border-left-color .3s, box-shadow .3s, transform .3s;
@@ -123,8 +124,8 @@
 
     /* ---- Sub-project card ---- */
     .proj-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
+      background: #243044;
+      border: 1px solid rgba(255,255,255,.06);
       border-left: 3px solid #2dd4bf;
       border-radius: .75rem;
       padding: 1rem 1.2rem;
@@ -182,6 +183,85 @@
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
     section { scroll-margin-top: 1.5rem; }
+
+    /* ---- Float animation for icons ---- */
+    @keyframes float-y {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-7px); }
+    }
+    .icon-float   { animation: float-y 3s ease-in-out infinite; }
+    .icon-float-1 { animation: float-y 3s ease-in-out 0.4s infinite; }
+    .icon-float-2 { animation: float-y 3s ease-in-out 0.8s infinite; }
+    .icon-float-3 { animation: float-y 3s ease-in-out 1.2s infinite; }
+    .icon-float-4 { animation: float-y 3s ease-in-out 1.6s infinite; }
+    .icon-float-5 { animation: float-y 3s ease-in-out 2.0s infinite; }
+
+    /* ---- Glow pulse for stat cards ---- */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0); }
+      50%       { box-shadow: 0 0 18px rgba(56,189,248,.22); }
+    }
+    .glow-pulse { animation: glow-pulse 2.8s ease-in-out infinite; }
+
+    /* ---- Shimmer on badge hover ---- */
+    .badge {
+      transition: background .25s, color .25s, transform .2s, box-shadow .2s;
+    }
+    .badge:hover {
+      background: rgba(56,189,248,.18);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56,189,248,.2);
+    }
+
+    /* ---- Stat card hover ---- */
+    .stat-card {
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: default;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(56,189,248,.22);
+      z-index: 1; position: relative;
+    }
+
+    /* ---- Icon box wobble on group hover ---- */
+    @keyframes icon-wobble {
+      0%   { transform: scale(1)    rotate(0deg); }
+      20%  { transform: scale(1.25) rotate(-12deg); }
+      40%  { transform: scale(1.2)  rotate(10deg); }
+      60%  { transform: scale(1.15) rotate(-6deg); }
+      80%  { transform: scale(1.1)  rotate(3deg); }
+      100% { transform: scale(1)    rotate(0deg); }
+    }
+    .icon-box { display: flex; align-items: center; justify-content: center; }
+    .group:hover .icon-box { animation: icon-wobble .65s cubic-bezier(.36,.07,.19,.97) both; }
+
+    /* ---- Colored card glow on hover ---- */
+    .hover-glow-sky:hover    { box-shadow: 0 10px 32px rgba(56,189,248,.38)  !important; border-color: rgba(56,189,248,.6)  !important; }
+    .hover-glow-teal:hover   { box-shadow: 0 10px 32px rgba(45,212,191,.38)  !important; border-color: rgba(45,212,191,.6)  !important; }
+    .hover-glow-indigo:hover { box-shadow: 0 10px 32px rgba(129,140,248,.38) !important; border-color: rgba(129,140,248,.6) !important; }
+    .hover-glow-purple:hover { box-shadow: 0 10px 32px rgba(168,85,247,.38)  !important; border-color: rgba(168,85,247,.6)  !important; }
+    .hover-glow-orange:hover { box-shadow: 0 10px 32px rgba(251,146,60,.38)  !important; border-color: rgba(251,146,60,.6)  !important; }
+    .hover-glow-rose:hover   { box-shadow: 0 10px 32px rgba(244,63,94,.38)   !important; border-color: rgba(244,63,94,.6)   !important; }
+    .hover-glow-yellow:hover { box-shadow: 0 10px 32px rgba(234,179,8,.38)   !important; border-color: rgba(234,179,8,.6)   !important; }
+
+    /* ---- Timeline dot: continuous pulse + hover scale ---- */
+    .timeline-dot { transition: transform .3s ease; }
+    .group:hover .timeline-dot { transform: scale(1.28) !important; }
+
+    /* ---- STAR block hover ---- */
+    .star-block { transition: transform .25s ease, box-shadow .25s ease; }
+    .star-block:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+    .stat-card.star-block { transition: transform .3s ease, box-shadow .3s ease; }
+    .stat-card.star-block:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 28px rgba(56,189,248,.22); transition-delay: 0s !important; }
+
+    /* ---- Sub-project card hover ---- */
+    .sub-proj-hover { transition: border-top-color .25s, border-right-color .25s, border-bottom-color .25s, box-shadow .25s; }
+    .sub-proj-hover:hover { border-top-color: rgba(56,189,248,.45) !important; border-right-color: rgba(56,189,248,.45) !important; border-bottom-color: rgba(56,189,248,.45) !important; box-shadow: 0 4px 18px rgba(56,189,248,.12); }
+    /* Combined - wins on both specificity (0,2,x) and cascade order */
+    .star-block.sub-proj-hover { transition: transform .3s ease, box-shadow .3s ease, border-top-color .25s, border-right-color .25s, border-bottom-color .25s; }
+    .star-block.sub-proj-hover:hover { transform: translateY(-4px) scale(1.03) !important; box-shadow: 0 12px 28px rgba(56,189,248,.22) !important; z-index: 1; position: relative; }
 
     /* Mobile adjustments */
     @media (max-width: 1023px) {
@@ -326,7 +406,7 @@
         </div>
         <div>
           <div class="flex justify-between mb-1">
-            <span class="text-sm text-slate-400">Machine Learning/Deep Learning</span>
+            <span class="text-sm text-slate-400">Machine Learning / Deep Learning</span>
             <span class="text-sm font-mono" style="color:#38bdf8;">90%</span>
           </div>
           <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
@@ -474,265 +554,249 @@
     </section>
 
     <!-- Content wrapper -->
-    <div class="px-6 md:px-10 xl:px-14 py-14 space-y-16 max-w-5xl mx-auto">
+    <div class="px-6 md:px-10 xl:px-14 py-14 space-y-20 max-w-5xl mx-auto">
 
       <!-- =========================================================
-           EXPERIENCE
+           EXPERIENCE - Timeline layout
       ========================================================= -->
       <section id="experience" data-aos="fade-up">
-        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-10">
           <i class="fas fa-briefcase text-sky-500"></i>
           Employment History
         </h2>
 
-        <div class="space-y-6">
+        <!-- Timeline -->
+        <div class="relative">
+          <!-- Vertical line -->
+          <div class="absolute left-6 top-0 bottom-0 w-px hidden md:block"
+               style="background: linear-gradient(180deg, #38bdf8, #818cf8, #2dd4bf);"></div>
 
-          <!-- 1. Simpson Strong-Tie -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="80">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Senior AI Engineer</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Simpson Strong-Tie</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
-                </p>
+          <div class="space-y-8">
+
+            <!-- 1. Simpson Strong-Tie -->
+            <div class="group relative md:pl-20" data-aos="fade-right" data-aos-delay="60">
+              <!-- Timeline dot -->
+              <div class="timeline-dot hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full items-center justify-center shadow-lg z-10"
+                   style="background: linear-gradient(135deg,#0ea5e9,#38bdf8); box-shadow:0 0 16px rgba(56,189,248,.4);">
+                <i class="fas fa-robot text-white text-lg"></i>
               </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
-                May 2024 - Present
-              </span>
+
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover-glow-sky">
+                <!-- Card header band -->
+                <div class="px-6 py-4 flex flex-wrap items-center justify-between gap-3"
+                     style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);">
+                  <div>
+                    <h3 class="text-lg font-bold text-white font-heading">Senior AI Engineer</h3>
+                    <p class="text-sky-300 text-sm font-semibold mt-0.5">Simpson Strong-Tie</p>
+                    <p class="text-slate-400 text-xs mt-0.5">
+                      <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
+                    </p>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                        style="background:rgba(56,189,248,.15);color:#7dd3fc;border:1px solid rgba(56,189,248,.3);">
+                    May 2024 - Present
+                  </span>
+                </div>
+
+                <div class="p-6 space-y-4">
+                  <!-- STAR blocks -->
+                  <div class="grid sm:grid-cols-2 gap-3">
+                    <div class="rounded-xl p-3.5 star-block sub-proj-hover" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15);border-left:3px solid #38bdf8;">
+                      <p class="text-xs font-bold uppercase tracking-wider text-sky-400 mb-1">Situation</p>
+                      <p class="text-sm text-slate-400 leading-relaxed">Lead an AI project developing Deep Learning models for auto-assist takeoff in construction drawings (Pipeline PTO), collaborating with the FPT AI team.</p>
+                    </div>
+                    <div class="rounded-xl p-3.5 star-block sub-proj-hover" style="background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.15);border-left:3px solid #fb923c;">
+                      <p class="text-xs font-bold uppercase tracking-wider text-orange-500 mb-1">Problem</p>
+                      <p class="text-sm text-slate-400 leading-relaxed">Manual quantitative takeoff is error-prone and time-consuming due to inconsistent scales, complex interpretations, and coordination issues.</p>
+                    </div>
+                    <div class="rounded-xl p-3.5 star-block sub-proj-hover" style="background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15);border-left:3px solid #34d399;">
+                      <p class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Contribution</p>
+                      <p class="text-sm text-slate-400 leading-relaxed">Developed OCR, object detection, segmentation and line detection models to analyze 2D drawings (walls, roofs, floors) - computing both linear and area measurements.</p>
+                    </div>
+                    <div class="rounded-xl p-3.5 star-block sub-proj-hover" style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.15);border-left:3px solid #a855f7;">
+                      <p class="text-xs font-bold uppercase tracking-wider text-purple-500 mb-1">Target</p>
+                      <p class="text-sm text-slate-400 leading-relaxed"><span class="font-bold text-emerald-600">&gt;90% accuracy</span> for material estimation, significantly reducing human error and processing time.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1 flex flex-wrap gap-2">
+                    <span class="badge">akaOCR</span><span class="badge">PaddleOCR</span><span class="badge">YOLO</span>
+                    <span class="badge">OpenCV</span><span class="badge">Azure ML</span><span class="badge">Detectron</span>
+                    <span class="badge">PyTorch</span><span class="badge">Flask</span><span class="badge">FastAPI</span><span class="badge">Linux</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="space-y-2.5 text-sm text-slate-600 leading-relaxed">
-              <p>
-                <span class="font-semibold text-slate-700">Situation -</span>
-                Lead an AI project developing Deep Learning models for auto-assist takeoff in construction drawings
-                (Pipeline PTO), overseeing and guiding the project while collaborating with the FPT AI development team.
-              </p>
-              <p>
-                <span class="font-semibold text-slate-700">Problem -</span>
-                Manual quantitative takeoff for estimating materials, equipment, and labor is error-prone,
-                time-consuming, and challenging due to inconsistent scales, complex interpretations, and coordination issues.
-              </p>
-              <p>
-                <span class="font-semibold text-slate-700">Contribution -</span>
-                Developed and integrated multiple AI models to analyze 2D construction drawings (walls, roofs, floors,
-                exterior finishes): OCR models, object detection, segmentation models, and line detection algorithms
-                to accurately calculate required materials following business rules, providing both linear and area measurements.
-              </p>
-              <p>
-                <span class="font-semibold text-slate-700">Target -</span>
-                <span class="font-semibold text-emerald-600">&gt;90% accuracy</span> for material estimation during takeoff,
-                significantly reducing human error and processing time.
-              </p>
+            <!-- 2. Sejong Lab -->
+            <div class="group relative md:pl-20" data-aos="fade-left" data-aos-delay="80">
+              <div class="timeline-dot hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full items-center justify-center shadow-lg z-10"
+                   style="background: linear-gradient(135deg,#0d9488,#2dd4bf); box-shadow:0 0 16px rgba(45,212,191,.4);">
+                <i class="fas fa-microscope text-white text-lg"></i>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover-glow-teal">
+                <div class="px-6 py-4 flex flex-wrap items-center justify-between gap-3"
+                     style="background: linear-gradient(135deg,#0f2027,#1a3a3a 100%);">
+                  <div>
+                    <h3 class="text-lg font-bold text-white font-heading">AI Researcher &amp; Lab Leader</h3>
+                    <p class="text-teal-300 text-sm font-semibold mt-0.5">Imaging &amp; Intelligent Systems Lab - Sejong University</p>
+                    <p class="text-slate-400 text-xs mt-0.5"><i class="fas fa-location-dot mr-1"></i>Seoul, South Korea</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                        style="background:rgba(45,212,191,.15);color:#5eead4;border:1px solid rgba(45,212,191,.3);">
+                    Sep 2019 - Feb 2024
+                  </span>
+                </div>
+
+                <div class="p-6">
+                  <p class="text-sm text-slate-400 italic mb-5 flex items-center gap-2">
+                    <i class="fas fa-landmark text-teal-400"></i>
+                    5-year government-funded program - research on AI-based intelligent surveillance systems.
+                  </p>
+
+                  <div class="space-y-4">
+                    <!-- Project 1 -->
+                    <div class="rounded-xl overflow-hidden sub-proj-hover star-block" style="border:1px solid rgba(45,212,191,.15);border-left:3px solid #2dd4bf;">
+                      <div class="flex items-center gap-3 px-4 py-2.5"
+                           style="background:linear-gradient(90deg,rgba(45,212,191,.12),rgba(45,212,191,.04));">
+                        <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                              style="background:#2dd4bf;">1</span>
+                        <span class="font-bold text-slate-200 text-sm">Animal Abnormal Behavior Detection</span>
+                        <span class="text-xs text-slate-400 ml-auto font-mono">2022–2023</span>
+                      </div>
+                      <div class="px-4 py-3 space-y-2 text-sm text-slate-400 leading-relaxed">
+                        <p><span class="font-semibold text-slate-300">Problem:</span> Detection models degrade when deployed to new surveillance environments; re-annotation is tedious.</p>
+                        <p><span class="font-semibold text-slate-300">Contribution:</span> Iterative training framework with a binary classifier to auto-label bounding boxes - eliminating manual re-annotation.</p>
+                        <p><span class="font-semibold text-emerald-400 font-semibold">Result: Accuracy 0.35→0.91 · mAP 0.74→0.99</span> in a few iterative cycles.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                          <span class="badge">YOLO</span><span class="badge">OpenCV</span><span class="badge">Iterative Training</span><span class="badge">Binary Classifier</span><span class="badge">PyTorch</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="rounded-xl overflow-hidden sub-proj-hover star-block" style="border:1px solid rgba(56,189,248,.15);border-left:3px solid #38bdf8;">
+                      <div class="flex items-center gap-3 px-4 py-2.5"
+                           style="background:linear-gradient(90deg,rgba(56,189,248,.12),rgba(56,189,248,.04));">
+                        <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                              style="background:#38bdf8;">2</span>
+                        <span class="font-bold text-slate-200 text-sm">Human Abnormal Behavior Recognition</span>
+                        <span class="text-xs text-slate-400 ml-auto font-mono">2019–2024</span>
+                      </div>
+                      <div class="px-4 py-3 space-y-2 text-sm text-slate-400 leading-relaxed">
+                        <p><span class="font-semibold text-slate-300">Problem:</span> Low-light surveillance - reduced visibility, no color info - makes visible-only approaches ineffective.</p>
+                        <p><span class="font-semibold text-slate-300">Contribution:</span> Built MIHAB dataset (thermal + visible). Proposed 3D multimodal feature fusion + contrastive pre-training for abnormal-behavior recognition.</p>
+                        <p><span class="font-semibold text-emerald-400 font-semibold">Result: 92.7% accuracy</span> (vs 85.2% baseline) · Edge-deployable on <strong>Nvidia Jetson Orin Nano</strong>.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                          <span class="badge">3D CNNs</span><span class="badge">Contrastive Learning</span><span class="badge">Thermal Imaging</span><span class="badge">3D Feature Fusion</span><span class="badge">Jetson Orin Nano</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="badge">akaOCR</span>
-              <span class="badge">PaddleOCR</span>
-              <span class="badge">YOLO</span>
-              <span class="badge">OpenCV</span>
-              <span class="badge">Azure ML</span>
-              <span class="badge">Detectron</span>
-              <span class="badge">PyTorch</span>
-              <span class="badge">Flask</span>
-              <span class="badge">FastAPI</span>
-              <span class="badge">Linux</span>
+            <!-- 3. Data Science in Brief -->
+            <div class="group relative md:pl-20" data-aos="fade-right" data-aos-delay="100">
+              <div class="timeline-dot hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full items-center justify-center shadow-lg z-10"
+                   style="background: linear-gradient(135deg,#7c3aed,#818cf8); box-shadow:0 0 16px rgba(129,140,248,.4);">
+                <i class="fas fa-pen-nib text-white text-lg"></i>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover-glow-indigo">
+                <div class="px-6 py-4 flex flex-wrap items-center justify-between gap-3"
+                     style="background: linear-gradient(135deg,#1e1b4b,#312e81);">
+                  <div>
+                    <h3 class="text-lg font-bold text-white font-heading">Editor &amp; Co-head Content Creator</h3>
+                    <p class="text-indigo-300 text-sm font-semibold mt-0.5">Data Science in Brief</p>
+                    <p class="text-slate-400 text-xs mt-0.5"><i class="fas fa-location-dot mr-1"></i>New York, United States (Remote)</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                        style="background:rgba(129,140,248,.15);color:#a5b4fc;border:1px solid rgba(129,140,248,.3);">
+                    Jun 2019 - Jul 2022
+                  </span>
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-slate-400 leading-relaxed">
+                    Dedicated efforts to a non-profit AI / Data Science community. Oversaw editorial operations, crafted concise informative articles, organized hands-on Data Science events, and managed relationships with authors, in-house team members, and freelance contributors to foster knowledge sharing across the community.
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <!-- 4. Vicohub -->
+            <div class="group relative md:pl-20" data-aos="fade-left" data-aos-delay="120">
+              <div class="timeline-dot hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full items-center justify-center shadow-lg z-10"
+                   style="background: linear-gradient(135deg,#7c3aed,#a78bfa); box-shadow:0 0 16px rgba(167,139,250,.4);">
+                <i class="fas fa-chalkboard-teacher text-white text-lg"></i>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover-glow-purple">
+                <div class="px-6 py-4 flex flex-wrap items-center justify-between gap-3"
+                     style="background: linear-gradient(135deg,#1e1b4b,#4c1d95);">
+                  <div>
+                    <h3 class="text-lg font-bold text-white font-heading">Lecturer &amp; Teaching Assistant</h3>
+                    <p class="text-violet-300 text-sm font-semibold mt-0.5">Vicohub</p>
+                    <p class="text-slate-400 text-xs mt-0.5"><i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                        style="background:rgba(167,139,250,.15);color:#c4b5fd;border:1px solid rgba(167,139,250,.3);">
+                    Oct 2018 - Sep 2019
+                  </span>
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-slate-400 leading-relaxed mb-4">Delivered comprehensive ML and Data Science courses at a specialized AI training center, collaborating with professors from Tan Tao University.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="badge">Linear Regression</span><span class="badge">SVM</span><span class="badge">Random Forest</span>
+                    <span class="badge">PCA</span><span class="badge">K-Means</span><span class="badge">Neural Networks</span>
+                    <span class="badge">NumPy</span><span class="badge">Pandas</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Axon Active -->
+            <div class="group relative md:pl-20" data-aos="fade-right" data-aos-delay="140">
+              <div class="timeline-dot hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full items-center justify-center shadow-lg z-10"
+                   style="background: linear-gradient(135deg,#0369a1,#38bdf8); box-shadow:0 0 16px rgba(56,189,248,.3);">
+                <i class="fas fa-code text-white text-lg"></i>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover-glow-sky">
+                <div class="px-6 py-4 flex flex-wrap items-center justify-between gap-3"
+                     style="background: linear-gradient(135deg,#0c1a2e,#1a3a5c);">
+                  <div>
+                    <h3 class="text-lg font-bold text-white font-heading">Software Engineer</h3>
+                    <p class="text-sky-300 text-sm font-semibold mt-0.5">Axon Active Vietnam</p>
+                    <p class="text-slate-400 text-xs mt-0.5"><i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam</p>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                        style="background:rgba(56,189,248,.15);color:#7dd3fc;border:1px solid rgba(56,189,248,.3);">
+                    Jun 2016 - Aug 2019
+                  </span>
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-slate-400 mb-4">Built outsourcing banking applications for Swiss enterprises (Finform, Axon Fintech).</p>
+                  <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                    <div class="rounded-xl p-4 star-block sub-proj-hover" style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.15);border-left:3px solid #38bdf8;">
+                      <p class="font-bold text-sky-400 text-sm mb-1"><i class="fas fa-user-plus mr-1"></i>Client Onboarding (COB)</p>
+                      <p class="text-xs text-slate-400 leading-relaxed">Streamlined new client intake for Postfinance, Hypothekarbank Lenzburg, Berner Kantonalbank - mobile &amp; web.</p>
+                    </div>
+                    <div class="rounded-xl p-4 star-block sub-proj-hover" style="background:rgba(45,212,191,.07);border:1px solid rgba(45,212,191,.15);border-left:3px solid #2dd4bf;">
+                      <p class="font-bold text-teal-400 text-sm mb-1"><i class="fas fa-building-columns mr-1"></i>Self-Onboarding (SOB)</p>
+                      <p class="text-xs text-slate-400 leading-relaxed">Platform for bank staff to enter onboarding data per business rules - Baloise Bank SoBa, Credit Highway.</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="badge">Java</span><span class="badge">Spring Framework</span><span class="badge">NGINX</span>
+                    <span class="badge">Postgres</span><span class="badge">MySQL</span><span class="badge">Linux</span><span class="badge">SCRUM Agile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <!-- 2. Sejong Lab -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">AI Researcher & Lab Leader</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Imaging &amp; Intelligent Systems Lab - Sejong AI Building Center</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Seoul, South Korea
-                </p>
-              </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(45,212,191,.1);color:#2dd4bf;border:1px solid rgba(45,212,191,.3);">
-                Sep 2019 - Feb 2024
-              </span>
-            </div>
-
-            <p class="text-sm text-slate-500 italic mb-5">
-              Research and build AI-based intelligent systems for detecting and recognizing abnormal behaviors
-              (5-year, government-funded program).
-            </p>
-
-            <!-- Project 1 -->
-            <div class="proj-card mb-4">
-              <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2">
-                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                      style="background:#2dd4bf;">1</span>
-                Animal Abnormal Behavior Detection
-                <span class="text-xs text-slate-400 font-normal">(2022–2023)</span>
-              </h4>
-              <div class="space-y-1.5 text-sm text-slate-600 leading-relaxed">
-                <p><span class="font-semibold text-slate-700">Problem -</span>
-                  Detection models retrained for one surveillance stream degrade significantly when deployed to another,
-                  and re-annotation of streaming data is tedious and error-prone.
-                </p>
-                <p><span class="font-semibold text-slate-700">Contribution -</span>
-                  Proposed an iterative training framework employing a binary classifier to distinguish true/false
-                  positives from bounding box outputs, enhancing model adaptability without manual relabeling.
-                </p>
-                <p><span class="font-semibold text-slate-700">Result -</span>
-                  <span class="font-semibold text-emerald-600">Accuracy: 0.35 → 0.91 (mAP: 0.74 → 0.99)</span>
-                  in just a few iterative cycles.
-                </p>
-              </div>
-              <div class="mt-3 flex flex-wrap gap-1.5">
-                <span class="badge">YOLO</span>
-                <span class="badge">OpenCV</span>
-                <span class="badge">Iterative Training</span>
-                <span class="badge">Binary Classifier</span>
-                <span class="badge">PyTorch</span>
-                <span class="badge">Flask</span>
-                <span class="badge">Linux</span>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="proj-card">
-              <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2">
-                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                      style="background:#38bdf8;">2</span>
-                Human Abnormal Behavior Recognition
-                <span class="text-xs text-slate-400 font-normal">(2019–2024)</span>
-              </h4>
-              <div class="space-y-1.5 text-sm text-slate-600 leading-relaxed">
-                <p><span class="font-semibold text-slate-700">Problem -</span>
-                  Low-light surveillance causes reduced visibility, poor image quality, and absent color information -
-                  making visible-only approaches ineffective. A lightweight real-time system is essential.
-                </p>
-                <p><span class="font-semibold text-slate-700">Contribution -</span>
-                  Built the <strong>MIHAB</strong> dataset (thermal + visible video). Proposed a 3D multimodal feature
-                  fusion technique combining visible and thermal infrared features; contrastive learning was applied
-                  to pre-train the backbone for fine-tuned abnormal-behavior recognition.
-                </p>
-                <p><span class="font-semibold text-slate-700">Result -</span>
-                  <span class="font-semibold text-emerald-600">Recognition accuracy: 92.7%</span>
-                  (vs 85.2% without pre-training). Models deployable on
-                  <strong>Nvidia Jetson Orin Nano</strong> for real-time edge inference.
-                </p>
-              </div>
-              <div class="mt-3 flex flex-wrap gap-1.5">
-                <span class="badge">3D CNNs</span>
-                <span class="badge">Contrastive Learning</span>
-                <span class="badge">Thermal Imaging</span>
-                <span class="badge">3D Feature Fusion</span>
-                <span class="badge">Multimodal Dataset</span>
-                <span class="badge">Jetson Orin Nano</span>
-                <span class="badge">PyTorch</span>
-                <span class="badge">OpenCV</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Data Science in Brief -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="120">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Editor &amp; Co-head Content Creator</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Data Science in Brief</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>New York, United States (Remote)
-                </p>
-              </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(129,140,248,.1);color:#818cf8;border:1px solid rgba(129,140,248,.3);">
-                Jun 2019 - Jul 2022
-              </span>
-            </div>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Dedicated efforts to a non-profit AI / Data Science community focused on facilitating learning and
-              knowledge exchange. Oversaw editorial operations, crafted concise informative articles, organized
-              hands-on Data Science events, and managed relationships with authors, in-house team members,
-              and freelance contributors to foster practical learning experiences across the DS community.
-            </p>
-          </div>
-
-          <!-- 4. Vicohub -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="140">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Lecturer &amp; Teaching Assistant</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Vicohub</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
-                </p>
-              </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(129,140,248,.1);color:#818cf8;border:1px solid rgba(129,140,248,.3);">
-                Oct 2018 - Sep 2019
-              </span>
-            </div>
-            <p class="text-sm text-slate-600 leading-relaxed mb-4">
-              Delivered comprehensive ML and Data Science courses at a specialized AI training center,
-              collaborating with professors from Tan Tao University.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="badge">Linear Regression</span>
-              <span class="badge">SVM</span>
-              <span class="badge">Random Forest</span>
-              <span class="badge">PCA</span>
-              <span class="badge">K-Means</span>
-              <span class="badge">Neural Networks</span>
-              <span class="badge">NumPy</span>
-              <span class="badge">Pandas</span>
-            </div>
-          </div>
-
-          <!-- 5. Axon Active -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="160">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Software Engineer</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Axon Active Vietnam</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
-                </p>
-              </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
-                Jun 2016 - Aug 2019
-              </span>
-            </div>
-            <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-              Built and developed outsourcing banking applications for Swiss enterprises
-              (Finform, Axon Fintech).
-            </p>
-            <div class="grid sm:grid-cols-2 gap-3 mb-4">
-              <div class="proj-card" style="border-left-color:#38bdf8;">
-                <h4 class="font-bold text-slate-700 text-sm mb-1">Client Onboarding (COB)</h4>
-                <p class="text-xs text-slate-500 leading-relaxed">
-                  User-friendly web app for welcoming new banking clients - covering Postfinance,
-                  Hypothekarbank Lenzburg, Berner Kantonalbank. Both mobile &amp; web solutions.
-                </p>
-              </div>
-              <div class="proj-card" style="border-left-color:#38bdf8;">
-                <h4 class="font-bold text-slate-700 text-sm mb-1">Self-Onboarding (SOB)</h4>
-                <p class="text-xs text-slate-500 leading-relaxed">
-                  Platform empowering bank employees to enter onboarding data following business rules.
-                  Served Baloise Bank SoBa and Credit Highway.
-                </p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="badge">Java</span>
-              <span class="badge">Spring Framework</span>
-              <span class="badge">NGINX</span>
-              <span class="badge">Postgres</span>
-              <span class="badge">MySQL</span>
-              <span class="badge">Linux</span>
-              <span class="badge">Windows Server</span>
-              <span class="badge">SCRUM Agile</span>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -740,7 +804,7 @@
            EDUCATION
       ========================================================= -->
       <section id="education" data-aos="fade-up">
-        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-10">
           <i class="fas fa-graduation-cap text-sky-500"></i>
           Education
         </h2>
@@ -748,72 +812,96 @@
         <div class="space-y-5">
 
           <!-- Sejong -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="80">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Master &amp; PhD - Computer Science &amp; Engineering</h3>
-                <p class="font-semibold text-sky-600 mt-0.5">Sejong University</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Seoul, South Korea
-                </p>
+          <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-right" data-aos-delay="60">
+            <div class="px-6 py-5 flex flex-wrap items-center justify-between gap-4"
+                 style="background:linear-gradient(135deg,#0f172a,#1e3a5f);">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 glow-pulse"
+                     style="background:rgba(56,189,248,.2);">
+                  <i class="fas fa-graduation-cap text-sky-400 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white font-heading">Master &amp; PhD - Computer Science &amp; Engineering</h3>
+                  <p class="text-sky-300 font-semibold text-sm">Sejong University · Seoul, South Korea</p>
+                </div>
               </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                    style="background:rgba(56,189,248,.15);color:#7dd3fc;border:1px solid rgba(56,189,248,.3);">
                 Sep 2019 - Feb 2024
               </span>
             </div>
-            <div class="grid grid-cols-3 gap-3 mb-5">
-              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
-                <div class="text-xl font-black text-sky-600 font-heading">4.3/4.5</div>
-                <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+            <div class="p-6">
+              <div class="grid grid-cols-3 gap-4 mb-5">
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(56,189,248,.03));border:1px solid rgba(56,189,248,.15);">
+                  <i class="fas fa-star text-sky-400 mb-2 text-lg"></i>
+                  <div class="text-2xl font-black text-sky-400 font-heading">4.3<span class="text-base">/4.5</span></div>
+                  <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+                </div>
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(45,212,191,.08),rgba(45,212,191,.03));border:1px solid rgba(45,212,191,.15);">
+                  <i class="fas fa-language text-teal-400 mb-2 text-lg"></i>
+                  <div class="text-2xl font-black text-teal-400 font-heading">107</div>
+                  <div class="text-xs text-slate-500 mt-0.5">TOEFL iBT</div>
+                </div>
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(129,140,248,.08),rgba(129,140,248,.03));border:1px solid rgba(129,140,248,.15);">
+                  <i class="fas fa-award text-indigo-400 mb-2 text-lg"></i>
+                  <div class="text-lg font-black text-indigo-400 font-heading leading-tight">Full Scholarship</div>
+                  <div class="text-xs text-slate-500 mt-0.5">5 Academic Years</div>
+                </div>
               </div>
-              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
-                <div class="text-xl font-black text-sky-600 font-heading">TOEFL 107</div>
-                <div class="text-xs text-slate-500 mt-0.5">English Proficiency</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">Machine Learning</span>
+                <span class="badge">Computer Vision</span>
               </div>
-              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
-                <div class="text-xl font-black text-sky-600 font-heading">Full Scholarship</div>
-                <div class="text-xs text-slate-500 mt-0.5">5 Academic Years</div>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="badge">Machine Learning</span>
-              <span class="badge">Computer Vision</span>
             </div>
           </div>
 
           <!-- Tan Tao -->
-          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="120">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
-              <div>
-                <h3 class="text-xl font-bold font-heading text-slate-800">Bachelor - Artificial Intelligence &amp; Computational Science</h3>
-                <p class="font-semibold text-teal-600 mt-0.5">Tan Tao University</p>
-                <p class="text-sm text-slate-500 mt-0.5">
-                  <i class="fas fa-location-dot mr-1"></i>Tay Ninh, Vietnam
-                </p>
+          <div class="rounded-2xl overflow-hidden shadow-sm border border-slate-700/50 bg-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-left" data-aos-delay="100">
+            <div class="px-6 py-5 flex flex-wrap items-center justify-between gap-4"
+                 style="background:linear-gradient(135deg,#0f2027,#134e4a);">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 glow-pulse"
+                     style="background:rgba(45,212,191,.2);">
+                  <i class="fas fa-university text-teal-400 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white font-heading">Bachelor - Artificial Intelligence &amp; Computational Science</h3>
+                  <p class="text-teal-300 font-semibold text-sm">Tan Tao University · Tay Ninh, Vietnam</p>
+                </div>
               </div>
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
-                    style="background:rgba(45,212,191,.1);color:#2dd4bf;border:1px solid rgba(45,212,191,.3);">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold shrink-0"
+                    style="background:rgba(45,212,191,.15);color:#5eead4;border:1px solid rgba(45,212,191,.3);">
                 Sep 2011 - Sep 2015
               </span>
             </div>
-            <div class="grid grid-cols-3 gap-3 mb-5">
-              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
-                <div class="text-xl font-black text-teal-600 font-heading">3.7/4.0</div>
-                <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+            <div class="p-6">
+              <div class="grid grid-cols-3 gap-4 mb-5">
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(45,212,191,.08),rgba(45,212,191,.03));border:1px solid rgba(45,212,191,.15);">
+                  <i class="fas fa-star text-teal-400 mb-2 text-lg"></i>
+                  <div class="text-2xl font-black text-teal-400 font-heading">3.7<span class="text-base">/4.0</span></div>
+                  <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+                </div>
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(56,189,248,.03));border:1px solid rgba(56,189,248,.15);">
+                  <i class="fas fa-language text-sky-400 mb-2 text-lg"></i>
+                  <div class="text-sm font-black text-sky-400 font-heading leading-tight">IELTS 6.0<br>TOEIC 915</div>
+                  <div class="text-xs text-slate-500 mt-0.5">English</div>
+                </div>
+                <div class="text-center rounded-xl py-4 stat-card star-block"
+                     style="background:linear-gradient(135deg,rgba(129,140,248,.08),rgba(129,140,248,.03));border:1px solid rgba(129,140,248,.15);">
+                  <i class="fas fa-award text-indigo-400 mb-2 text-lg"></i>
+                  <div class="text-lg font-black text-indigo-400 font-heading leading-tight">Full Scholarship</div>
+                  <div class="text-xs text-slate-500 mt-0.5">4 Academic Years</div>
+                </div>
               </div>
-              <div class="text-center p-3.5 rounded-xl col-span-1" style="background:#f8fafc;">
-                <div class="text-base font-black text-teal-600 font-heading leading-tight">IELTS 6.0 · TOEIC 915</div>
-                <div class="text-xs text-slate-500 mt-0.5">English Proficiency</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">Artificial Intelligence</span>
+                <span class="badge">Computational Science</span>
               </div>
-              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
-                <div class="text-xl font-black text-teal-600 font-heading">Full Scholarship</div>
-                <div class="text-xs text-slate-500 mt-0.5">4 Academic Years</div>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span class="badge">Artificial Intelligence</span>
-              <span class="badge">Computational Science</span>
             </div>
           </div>
 
@@ -824,80 +912,80 @@
            SKILLS
       ========================================================= -->
       <section id="skills" data-aos="fade-up">
-        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-10">
           <i class="fas fa-code text-sky-500"></i>
           Skills &amp; Technologies
         </h2>
 
-        <div class="grid md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-          <div class="card p-6" data-aos="fade-up" data-aos-delay="60">
-            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
-              <i class="fas fa-brain text-sky-500"></i> AI &amp; Machine Learning
-            </h3>
+          <!-- AI & ML - wide (spans 2 cols) -->
+          <div class="relative md:col-span-2 rounded-2xl bg-slate-800 border border-slate-700/50 p-6 overflow-hidden hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 hover-glow-sky">
+            <i class="fas fa-brain absolute right-4 bottom-3 text-8xl opacity-[0.12] text-sky-400 pointer-events-none"></i>
+            <p class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">AI &amp; Machine Learning</p>
             <div class="flex flex-wrap gap-2">
-              <span class="badge">Machine Learning</span>
-              <span class="badge">Deep Learning</span>
-              <span class="badge">Computer Vision</span>
-              <span class="badge">YOLO</span>
-              <span class="badge">Object Detection</span>
-              <span class="badge">Segmentation</span>
-              <span class="badge">OCR</span>
-              <span class="badge">Contrastive Learning</span>
-              <span class="badge">3D CNNs</span>
-              <span class="badge">Feature Fusion</span>
-              <span class="badge">PyTorch</span>
-              <span class="badge">OpenCV</span>
-              <span class="badge">Detectron</span>
-              <span class="badge">PaddleOCR</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Machine Learning</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Deep Learning</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Computer Vision</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">YOLO</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Object Detection</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Segmentation</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">OCR</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Contrastive Learning</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">3D CNNs</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Feature Fusion</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">PyTorch</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">OpenCV</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Detectron</span>
+              <span style="background:rgba(56,189,248,.12);color:#7dd3fc;border:1px solid rgba(56,189,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">PaddleOCR</span>
             </div>
           </div>
 
-          <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
-              <i class="fas fa-terminal text-teal-500"></i> Programming &amp; Dev
-            </h3>
+          <!-- Programming - narrow (1 col) -->
+          <div class="relative rounded-2xl bg-slate-800 border border-slate-700/50 p-6 overflow-hidden hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 hover-glow-teal">
+            <i class="fas fa-terminal absolute right-4 bottom-3 text-8xl opacity-[0.12] text-teal-400 pointer-events-none"></i>
+            <p class="text-xs font-bold uppercase tracking-widest text-teal-400 mb-2">Programming &amp; Dev</p>
             <div class="flex flex-wrap gap-2">
-              <span class="badge">Python</span>
-              <span class="badge">Java</span>
-              <span class="badge">C++</span>
-              <span class="badge">Linux</span>
-              <span class="badge">Flask</span>
-              <span class="badge">FastAPI</span>
-              <span class="badge">Spring Framework</span>
-              <span class="badge">NGINX</span>
-              <span class="badge">Postgres</span>
-              <span class="badge">MySQL</span>
-              <span class="badge">NumPy</span>
-              <span class="badge">Pandas</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Python</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Java</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">C++</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Linux</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Flask</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">FastAPI</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Spring Framework</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">NGINX</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Postgres</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">MySQL</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">NumPy</span>
+              <span style="background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Pandas</span>
             </div>
           </div>
 
-          <div class="card p-6" data-aos="fade-up" data-aos-delay="140">
-            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
-              <i class="fas fa-cloud text-indigo-500"></i> Cloud &amp; Infrastructure
-            </h3>
+          <!-- Cloud - narrow (1 col) -->
+          <div class="relative rounded-2xl bg-slate-800 border border-slate-700/50 p-6 overflow-hidden hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 hover-glow-indigo">
+            <i class="fas fa-cloud absolute right-4 bottom-3 text-8xl opacity-[0.12] text-indigo-400 pointer-events-none"></i>
+            <p class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">Cloud &amp; Infrastructure</p>
             <div class="flex flex-wrap gap-2">
-              <span class="badge">Azure Machine Learning</span>
-              <span class="badge">Nvidia Jetson Orin Nano</span>
-              <span class="badge">Edge AI</span>
-              <span class="badge">Linux Server</span>
-              <span class="badge">Windows Server</span>
+              <span style="background:rgba(129,140,248,.12);color:#a5b4fc;border:1px solid rgba(129,140,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Azure Machine Learning</span>
+              <span style="background:rgba(129,140,248,.12);color:#a5b4fc;border:1px solid rgba(129,140,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Nvidia Jetson Orin Nano</span>
+              <span style="background:rgba(129,140,248,.12);color:#a5b4fc;border:1px solid rgba(129,140,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Edge AI</span>
+              <span style="background:rgba(129,140,248,.12);color:#a5b4fc;border:1px solid rgba(129,140,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Linux Server</span>
+              <span style="background:rgba(129,140,248,.12);color:#a5b4fc;border:1px solid rgba(129,140,248,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Windows Server</span>
             </div>
           </div>
 
-          <div class="card p-6" data-aos="fade-up" data-aos-delay="180">
-            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
-              <i class="fas fa-flask text-purple-500"></i> Research &amp; Methodology
-            </h3>
+          <!-- Research - wide (spans 2 cols) -->
+          <div class="relative md:col-span-2 rounded-2xl bg-slate-800 border border-slate-700/50 p-6 overflow-hidden hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 hover-glow-purple">
+            <i class="fas fa-flask absolute right-4 bottom-3 text-8xl opacity-[0.12] text-purple-400 pointer-events-none"></i>
+            <p class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Research &amp; Methodology</p>
             <div class="flex flex-wrap gap-2">
-              <span class="badge">Research Methodology</span>
-              <span class="badge">Dataset Construction</span>
-              <span class="badge">Iterative Training</span>
-              <span class="badge">Model Evaluation</span>
-              <span class="badge">Data Engineering</span>
-              <span class="badge">Problem Solving</span>
-              <span class="badge">SCRUM Agile</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Research Methodology</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Dataset Construction</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Iterative Training</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Model Evaluation</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Data Engineering</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">Problem Solving</span>
+              <span style="background:rgba(168,85,247,.12);color:#d8b4fe;border:1px solid rgba(168,85,247,.25);" class="px-3 py-1 rounded-full text-xs font-medium">SCRUM Agile</span>
             </div>
           </div>
 
@@ -908,41 +996,53 @@
            COURSES
       ========================================================= -->
       <section id="courses" data-aos="fade-up">
-        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-10">
           <i class="fas fa-certificate text-sky-500"></i>
           Courses &amp; Certifications
         </h2>
 
         <div class="grid sm:grid-cols-3 gap-5">
 
-          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="60">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                 style="background:rgba(56,189,248,.1);">
-              <i class="fas fa-camera text-sky-500 text-2xl"></i>
+          <div class="group relative rounded-2xl overflow-hidden border border-slate-700/50 bg-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover-glow-sky" data-aos="flip-up" data-aos-delay="80">
+            <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#38bdf8,#2dd4bf);"></div>
+            <div class="p-6 text-center">
+              <div class="w-16 h-16 rounded-2xl mx-auto mb-4 icon-box"
+                   style="background:linear-gradient(135deg,rgba(56,189,248,.15),rgba(56,189,248,.05));border:1px solid rgba(56,189,248,.2);">
+                <i class="fas fa-camera-retro text-sky-500 text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-100 mb-1">PyImageSearch Gurus</h3>
+              <p class="text-sky-400 text-sm font-medium mb-3">PyImageSearch</p>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-mono"
+                    style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;">May 2021</span>
             </div>
-            <h3 class="font-bold text-slate-700 mb-1">PyImageSearch Gurus</h3>
-            <p class="text-sky-600 text-xs mb-3">PyImageSearch</p>
-            <span class="text-xs text-slate-400 font-mono">May 2021</span>
           </div>
 
-          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="100">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                 style="background:rgba(45,212,191,.1);">
-              <i class="fas fa-chart-bar text-teal-500 text-2xl"></i>
+          <div class="group relative rounded-2xl overflow-hidden border border-slate-700/50 bg-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover-glow-teal" data-aos="flip-up" data-aos-delay="180">
+            <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#2dd4bf,#818cf8);"></div>
+            <div class="p-6 text-center">
+              <div class="w-16 h-16 rounded-2xl mx-auto mb-4 icon-box"
+                   style="background:linear-gradient(135deg,rgba(45,212,191,.15),rgba(45,212,191,.05));border:1px solid rgba(45,212,191,.2);">
+                <i class="fas fa-chart-line text-teal-500 text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-100 mb-1">Data Science with Python</h3>
+              <p class="text-teal-400 text-sm font-medium mb-3">Vicohub</p>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-mono"
+                    style="background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4;">Nov 2018</span>
             </div>
-            <h3 class="font-bold text-slate-700 mb-1">Data Science with Python</h3>
-            <p class="text-sky-600 text-xs mb-3">Vicohub</p>
-            <span class="text-xs text-slate-400 font-mono">Nov 2018</span>
           </div>
 
-          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="140">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                 style="background:rgba(129,140,248,.1);">
-              <i class="fas fa-users text-indigo-500 text-2xl"></i>
+          <div class="group relative rounded-2xl overflow-hidden border border-slate-700/50 bg-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover-glow-indigo" data-aos="flip-up" data-aos-delay="280">
+            <div class="h-1.5 w-full" style="background:linear-gradient(90deg,#818cf8,#c084fc);"></div>
+            <div class="p-6 text-center">
+              <div class="w-16 h-16 rounded-2xl mx-auto mb-4 icon-box"
+                   style="background:linear-gradient(135deg,rgba(129,140,248,.15),rgba(129,140,248,.05));border:1px solid rgba(129,140,248,.2);">
+                <i class="fas fa-people-group text-indigo-500 text-2xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-100 mb-1">Agile Leadership &amp; Fit for Scrum</h3>
+              <p class="text-indigo-400 text-sm font-medium mb-3">Axon Active Vietnam</p>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-mono"
+                    style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;">May 2017</span>
             </div>
-            <h3 class="font-bold text-slate-700 mb-1">Agile Leadership &amp; Fit for Scrum</h3>
-            <p class="text-sky-600 text-xs mb-3">Axon Active Vietnam</p>
-            <span class="text-xs text-slate-400 font-mono">May 2017</span>
           </div>
 
         </div>
@@ -952,63 +1052,68 @@
            HOBBIES
       ========================================================= -->
       <section id="hobbies" data-aos="fade-up">
-        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-10">
           <i class="fas fa-heart text-sky-500"></i>
           Hobbies &amp; Interests
         </h2>
 
-        <div class="card p-6 md:p-8">
-          <div class="grid grid-cols-3 sm:grid-cols-6 gap-6 text-center">
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="60">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(56,189,248,.1);">
-                <i class="fas fa-book text-sky-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Reading</span>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-sky" data-aos="flip-left" data-aos-delay="60">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(56,189,248,.15),rgba(56,189,248,.05));">
+              <i class="fas fa-book-open text-sky-500 text-2xl"></i>
             </div>
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="100">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(45,212,191,.1);">
-                <i class="fas fa-music text-teal-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Music</span>
-            </div>
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="140">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(129,140,248,.1);">
-                <i class="fas fa-guitar text-indigo-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Guitar</span>
-            </div>
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="180">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(251,146,60,.1);">
-                <i class="fas fa-person-running text-orange-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Sports</span>
-            </div>
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="220">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(244,63,94,.1);">
-                <i class="fas fa-comments text-rose-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Socializing</span>
-            </div>
-            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="260">
-              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
-                   style="background:rgba(234,179,8,.1);">
-                <i class="fas fa-handshake text-yellow-500 text-xl"></i>
-              </div>
-              <span class="text-xs text-slate-600 font-medium">Community</span>
-            </div>
+            <span class="text-sm font-semibold text-slate-200">Reading</span>
           </div>
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-teal" data-aos="zoom-in-up" data-aos-delay="120">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(45,212,191,.15),rgba(45,212,191,.05));">
+              <i class="fas fa-headphones text-teal-500 text-2xl"></i>
+            </div>
+            <span class="text-sm font-semibold text-slate-200">Music</span>
+          </div>
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-indigo" data-aos="flip-right" data-aos-delay="180">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(129,140,248,.15),rgba(129,140,248,.05));">
+              <i class="fas fa-guitar text-indigo-500 text-2xl"></i>
+            </div>
+            <span class="text-sm font-semibold text-slate-200">Guitar</span>
+          </div>
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-orange" data-aos="flip-left" data-aos-delay="240">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(251,146,60,.15),rgba(251,146,60,.05));">
+              <i class="fas fa-person-running text-orange-500 text-2xl"></i>
+            </div>
+            <span class="text-sm font-semibold text-slate-200">Sports</span>
+          </div>
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-rose" data-aos="zoom-in-up" data-aos-delay="300">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(244,63,94,.15),rgba(244,63,94,.05));">
+              <i class="fas fa-comments text-rose-500 text-2xl"></i>
+            </div>
+            <span class="text-sm font-semibold text-slate-200">Socializing</span>
+          </div>
+
+          <div class="group rounded-2xl p-5 text-center border border-slate-700/50 bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default hover-glow-yellow" data-aos="flip-right" data-aos-delay="360">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-3 icon-box"
+                 style="background:linear-gradient(135deg,rgba(234,179,8,.15),rgba(234,179,8,.05));">
+              <i class="fas fa-handshake text-yellow-500 text-2xl"></i>
+            </div>
+            <span class="text-sm font-semibold text-slate-200">Community</span>
+          </div>
+
         </div>
       </section>
 
       <!-- Footer -->
-      <footer class="border-t border-slate-200 pt-8 pb-4 text-center">
+      <footer class="border-t border-slate-700/50 pt-8 pb-4 text-center">
         <p class="text-sm text-slate-400 font-mono">
-          Cuong Tran Dao Huy &middot; 2024 &middot; Built with
+          Cuong Tran Dao Huy &middot; 2025 &middot; Built with
           <span class="text-rose-400">&#9829;</span> using Tailwind CSS
         </p>
       </footer>
@@ -1022,6 +1127,14 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 550, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+  /* Reset AOS-injected transition on stat-cards so hover feels instant */
+  document.addEventListener('aos:in', ({ detail }) => {
+    if (detail.classList && detail.classList.contains('stat-card')) {
+      detail.style.transitionDuration = '0.1s';
+      detail.style.transitionDelay = '0s';
+    }
+  });
 
   /* ---- Skill bar animation (triggers on page load after short delay) ---- */
   setTimeout(() => {
