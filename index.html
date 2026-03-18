@@ -1,300 +1,1024 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuong Tran Dao Huy - Senior AI Engineer, AI Researcher, PhD in Computer Science">
+  <title>Cuong Tran Dao Huy - AI Engineer & Researcher</title>
 
-  <head>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Resume - Start Bootstrap Theme</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS Animate on Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
 
-    <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy:   #0b1120;
+      --navy2:  #0f172a;
+      --accent: #38bdf8;
+      --teal:   #2dd4bf;
+      --indigo: #818cf8;
+    }
 
-  </head>
+    html { scroll-behavior: smooth; }
 
-  <body id="page-top">
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Clarence Taylor</span>
-        <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
-        </span>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
-          </li>
-        </ul>
+    /* ---- Sidebar ---- */
+    #sidebar {
+      background: linear-gradient(170deg, #0f172a 0%, #0b1120 60%, #0d1f38 100%);
+    }
+
+    /* Subtle grid overlay on sidebar */
+    #sidebar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ---- Profile ring ---- */
+    .profile-ring-outer {
+      width: 136px; height: 136px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #38bdf8, #2dd4bf, #818cf8, #f472b6, #38bdf8);
+      animation: spin-ring 5s linear infinite;
+      display: flex; align-items: center; justify-content: center;
+    }
+    @keyframes spin-ring { to { transform: rotate(360deg); } }
+
+    /* ---- Nav links ---- */
+    .nav-link {
+      position: relative;
+      transition: color 0.25s, padding-left 0.25s;
+    }
+    .nav-link::before {
+      content: '';
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 3px; height: 0;
+      background: #38bdf8;
+      border-radius: 0 2px 2px 0;
+      transition: height 0.25s;
+    }
+    .nav-link:hover,
+    .nav-link.active { color: #38bdf8 !important; padding-left: 1.5rem !important; }
+    .nav-link:hover::before,
+    .nav-link.active::before { height: 70%; }
+
+    /* ---- Section heading ---- */
+    .sec-title {
+      font-family: 'Poppins', sans-serif;
+      display: inline-flex; align-items: center; gap: .6rem;
+    }
+    .sec-title::after {
+      content: '';
+      display: block; height: 3px; width: 56px;
+      background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+      border-radius: 2px;
+    }
+
+    /* ---- Cards ---- */
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      border-left: 4px solid transparent;
+      transition: border-left-color .3s, box-shadow .3s, transform .3s;
+    }
+    .card:hover {
+      border-left-color: #38bdf8;
+      box-shadow: 0 8px 32px rgba(56,189,248,.12);
+      transform: translateY(-2px);
+    }
+
+    /* ---- Sub-project card ---- */
+    .proj-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #2dd4bf;
+      border-radius: .75rem;
+      padding: 1rem 1.2rem;
+    }
+
+    /* ---- Tech badge ---- */
+    .badge {
+      font-family: 'Fira Code', monospace;
+      font-size: .72rem;
+      padding: .18rem .6rem;
+      border-radius: 4px;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.25);
+      color: #38bdf8;
+      white-space: nowrap;
+    }
+
+    /* ---- Skill bars ---- */
+    .skill-track {
+      height: 5px; background: rgba(255,255,255,.1);
+      border-radius: 99px; overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+      border-radius: 99px;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ---- Gradient text ---- */
+    .grad-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---- Hero background ---- */
+    .hero-bg {
+      background: radial-gradient(ellipse at 20% 50%, rgba(56,189,248,.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(129,140,248,.07) 0%, transparent 50%),
+                  linear-gradient(170deg, #0f172a 0%, #0b1120 50%, #111827 100%);
+    }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* ---- Scrollbar ---- */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    section { scroll-margin-top: 1.5rem; }
+
+    /* Mobile adjustments */
+    @media (max-width: 1023px) {
+      #sidebar { position: relative; width: 100%; height: auto; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="flex flex-col lg:flex-row min-h-screen">
+
+  <!-- =========================================================
+       SIDEBAR
+  ========================================================= -->
+  <aside id="sidebar" class="relative lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-72 xl:w-80 flex flex-col overflow-y-auto z-50 shrink-0">
+
+    <!-- Profile block -->
+    <div class="relative flex flex-col items-center px-6 pt-10 pb-6">
+
+      <!-- Spinning gradient ring + photo -->
+      <div class="profile-ring-outer mb-4">
+        <div class="w-[124px] h-[124px] rounded-full overflow-hidden" style="background:#0f172a;">
+          <img src="img/profile.jpg" alt="Cuong Tran Dao Huy"
+               class="w-full h-full object-cover">
+        </div>
       </div>
-    </nav>
+      <!-- Online dot -->
+      <span class="absolute" style="top:142px; right:calc(50% - 52px);">
+        <span class="block w-3.5 h-3.5 rounded-full bg-emerald-400"
+              style="border: 2px solid #0f172a; box-shadow: 0 0 6px #34d399;"></span>
+      </span>
 
-    <div class="container-fluid p-0">
+      <h1 class="font-heading text-white text-center text-lg font-bold leading-snug mb-0.5">
+        Cuong Tran Dao Huy
+      </h1>
+      <p class="text-center text-[10px] tracking-[.2em] font-mono mb-5" style="color:#38bdf8;">
+        AI ENGINEER · RESEARCHER · PhD
+      </p>
 
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-        <div class="my-auto">
-          <h1 class="mb-0">Clarence
-            <span class="text-primary">Taylor</span>
-          </h1>
-          <div class="subheading mb-5">3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
-            <a href="mailto:name@email.com">name@email.com</a>
-          </div>
-          <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
-          <div class="social-icons">
-            <a href="#">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </div>
+      <!-- Contact -->
+      <div class="w-full space-y-2 mb-5">
+        <a href="mailto:trandaohuycuong@gmail.com"
+           class="flex items-center gap-2.5 text-slate-400 hover:text-sky-400 text-xs transition-colors group">
+          <i class="fas fa-envelope w-4 text-center text-sky-500 group-hover:scale-110 transition-transform"></i>
+          <span class="truncate">trandaohuycuong@gmail.com</span>
+        </a>
+        <div class="flex items-center gap-2.5 text-slate-400 text-xs">
+          <i class="fas fa-phone w-4 text-center text-sky-500"></i>
+          <span>(+84) 975 175 591</span>
         </div>
-      </section>
-
-      <hr class="m-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-        <div class="my-auto">
-          <h2 class="mb-5">Experience</h2>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Senior Web Developer</h3>
-              <div class="subheading mb-3">Intelitec Solutions</div>
-              <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">March 2013 - Present</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Web Developer</h3>
-              <div class="subheading mb-3">Intelitec Solutions</div>
-              <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">December 2011 - March 2013</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Junior Web Designer</h3>
-              <div class="subheading mb-3">Shout! Media Productions</div>
-              <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">July 2010 - December 2011</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Web Design Intern</h3>
-              <div class="subheading mb-3">Shout! Media Productions</div>
-              <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">September 2008 - June 2010</span>
-            </div>
-          </div>
-
+        <div class="flex items-center gap-2.5 text-slate-400 text-xs">
+          <i class="fas fa-location-dot w-4 text-center text-sky-500"></i>
+          <span>Ho Chi Minh City, Vietnam</span>
         </div>
+      </div>
 
-      </section>
+      <!-- Social -->
+      <div class="flex gap-3 mb-6">
+        <a href="https://www.linkedin.com/in/tdhcuong/" title="LinkedIn"
+           class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-sky-500"
+           style="background:rgba(56,189,248,.15); color:#38bdf8;">
+          <i class="fab fa-linkedin-in text-sm"></i>
+        </a>
+        <a href="https://github.com/tdhcuong" title="GitHub"
+           class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-sky-500"
+           style="background:rgba(56,189,248,.15); color:#38bdf8;">
+          <i class="fab fa-github text-sm"></i>
+        </a>
+        <a href="mailto:trandaohuycuong@gmail.com" title="Email"
+           class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-sky-500"
+           style="background:rgba(56,189,248,.15); color:#38bdf8;">
+          <i class="fas fa-envelope text-sm"></i>
+        </a>
+      </div>
 
-      <hr class="m-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
-        <div class="my-auto">
-          <h2 class="mb-5">Education</h2>
-
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">University of Colorado Boulder</h3>
-              <div class="subheading mb-3">Bachelor of Science</div>
-              <div>Computer Science - Web Development Track</div>
-              <p>GPA: 3.23</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">August 2006 - May 2010</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">James Buchanan High School</h3>
-              <div class="subheading mb-3">Technology Magnet Program</div>
-              <p>GPA: 3.56</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">August 2002 - May 2006</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <hr class="m-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-        <div class="my-auto">
-          <h2 class="mb-5">Skills</h2>
-
-          <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-          <ul class="list-inline dev-icons">
-            <li class="list-inline-item">
-              <i class="fab fa-html5"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-css3-alt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-js-square"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-angular"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-react"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-node-js"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-sass"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-less"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-wordpress"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-gulp"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-grunt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fab fa-npm"></i>
-            </li>
-          </ul>
-
-          <div class="subheading mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
-          </ul>
-        </div>
-      </section>
-
-      <hr class="m-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
-        <div class="my-auto">
-          <h2 class="mb-5">Interests</h2>
-          <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-          <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
-        </div>
-      </section>
-
-      <hr class="m-0">
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-        <div class="my-auto">
-          <h2 class="mb-5">Awards &amp; Certifications</h2>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Google Analytics Certified Developer</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Mobile Web Specialist - Google Certification</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              2<sup>nd</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - James Buchanan High School - Hackathon 2006</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              3<sup>rd</sup>
-              Place - James Buchanan High School - Hackathon 2005</li>
-          </ul>
-        </div>
-      </section>
-
+      <div class="w-full h-px" style="background:rgba(255,255,255,.07);"></div>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Navigation -->
+    <nav class="px-4 mb-4">
+      <p class="text-[10px] font-semibold uppercase tracking-[.18em] mb-2 px-3" style="color:#475569;">Navigate</p>
+      <ul class="space-y-0.5">
+        <li>
+          <a href="#about" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-user w-4 text-center text-slate-500"></i> About
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-briefcase w-4 text-center text-slate-500"></i> Experience
+          </a>
+        </li>
+        <li>
+          <a href="#education" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-graduation-cap w-4 text-center text-slate-500"></i> Education
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-code w-4 text-center text-slate-500"></i> Skills
+          </a>
+        </li>
+        <li>
+          <a href="#courses" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-certificate w-4 text-center text-slate-500"></i> Courses
+          </a>
+        </li>
+        <li>
+          <a href="#hobbies" class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 text-sm font-medium transition-all">
+            <i class="fas fa-heart w-4 text-center text-slate-500"></i> Hobbies
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Skill bars -->
+    <div class="px-6 pb-4">
+      <div class="w-full h-px mb-4" style="background:rgba(255,255,255,.07);"></div>
+      <p class="text-[10px] font-semibold uppercase tracking-[.18em] mb-4" style="color:#475569;">Core Skills</p>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/resume.min.js"></script>
+      <div class="space-y-3" id="skill-bars">
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Research Methodology</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">95%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Problem Solving</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">93%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="93"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Computer Vision</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">92%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="92"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Machine Learning/Deep Learning</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">90%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Data Engineering</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">80%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-xs text-slate-400">Software Dev (Java / C++)</span>
+            <span class="text-xs font-mono" style="color:#38bdf8;">50%</span>
+          </div>
+          <div class="skill-track"><div class="skill-fill" data-w="50"></div></div>
+        </div>
+      </div>
 
-  </body>
+      <!-- Languages -->
+      <div class="mt-5">
+        <p class="text-[10px] font-semibold uppercase tracking-[.18em] mb-3" style="color:#475569;">Languages</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge">🇻🇳 Vietnamese</span>
+          <span class="badge">🇬🇧 English</span>
+        </div>
+      </div>
 
+      <!-- bottom padding -->
+      <div class="h-8"></div>
+    </div>
+
+  </aside>
+
+  <!-- =========================================================
+       MAIN CONTENT
+  ========================================================= -->
+  <main class="flex-1 lg:ml-72 xl:ml-80 min-w-0">
+
+    <!-- ---- HERO / ABOUT ---- -->
+    <section id="about" class="hero-bg relative overflow-hidden flex items-center"
+             style="min-height: 72vh;">
+      <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+
+      <!-- Glow blobs -->
+      <div class="absolute pointer-events-none"
+           style="top:-80px;right:-80px;width:400px;height:400px;
+                  background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);border-radius:50%;"></div>
+      <div class="absolute pointer-events-none"
+           style="bottom:-60px;left:30%;width:320px;height:320px;
+                  background:radial-gradient(circle,rgba(129,140,248,.08),transparent 70%);border-radius:50%;"></div>
+
+      <div class="relative z-10 px-8 py-20 lg:px-16 max-w-4xl w-full">
+
+        <div data-aos="fade-up" data-aos-delay="80">
+          <p class="text-xs font-mono mb-3" style="color:#38bdf8; letter-spacing:.12em;">
+            <span style="opacity:.5;">~/cuong $</span> whoami
+          </p>
+          <h1 class="font-heading text-5xl sm:text-6xl xl:text-7xl font-black text-white leading-[1.05] mb-3">
+            Cuong<br><span class="grad-text">Tran Dao Huy</span>
+          </h1>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="180" class="mb-6 flex flex-wrap gap-2">
+          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.3);color:#38bdf8;">
+            AI Researcher
+          </span>
+          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.3);color:#2dd4bf;">
+            Senior AI Engineer
+          </span>
+          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(129,140,248,.1);border-color:rgba(129,140,248,.3);color:#818cf8;">
+            Data Scientist
+          </span>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="260">
+          <p class="text-slate-300 text-base lg:text-lg leading-relaxed max-w-2xl mb-10">
+            PhD in Computer Science and Engineering with expertise in
+            <strong class="text-white">AI, Machine Learning, and Computer Vision</strong>.
+            Senior AI Engineer and AI content creator with various practical projects
+            in AI and Data Science. Skilled in building and refining effective Deep Learning models -
+            eager to drive impactful AI solutions in a professional, energetic environment.
+          </p>
+
+          <!-- Stats row -->
+          <div class="flex flex-wrap gap-8">
+            <div>
+              <div class="text-3xl font-black font-heading grad-text">5+</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-0.5">Years AI Research</div>
+            </div>
+            <div>
+              <div class="text-3xl font-black font-heading grad-text">4.3/4.5</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-0.5">PhD GPA</div>
+            </div>
+            <div>
+              <div class="text-3xl font-black font-heading grad-text">92.7%</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-0.5">Peak Model Accuracy</div>
+            </div>
+            <div>
+              <div class="text-3xl font-black font-heading grad-text">TOEFL 107</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-0.5">English</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content wrapper -->
+    <div class="px-6 md:px-10 xl:px-14 py-14 space-y-16 max-w-5xl">
+
+      <!-- =========================================================
+           EXPERIENCE
+      ========================================================= -->
+      <section id="experience" data-aos="fade-up">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+          <i class="fas fa-briefcase text-sky-500"></i>
+          Employment History
+        </h2>
+
+        <div class="space-y-6">
+
+          <!-- 1. Simpson Strong-Tie -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="80">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Senior AI Engineer</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Simpson Strong-Tie</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
+                May 2024 - Present
+              </span>
+            </div>
+
+            <div class="space-y-2.5 text-sm text-slate-600 leading-relaxed">
+              <p>
+                <span class="font-semibold text-slate-700">Situation -</span>
+                Lead an AI project developing Deep Learning models for auto-assist takeoff in construction drawings
+                (Pipeline PTO), overseeing and guiding the project while collaborating with the FPT AI development team.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-700">Problem -</span>
+                Manual quantitative takeoff for estimating materials, equipment, and labor is error-prone,
+                time-consuming, and challenging due to inconsistent scales, complex interpretations, and coordination issues.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-700">Contribution -</span>
+                Developed and integrated multiple AI models to analyze 2D construction drawings (walls, roofs, floors,
+                exterior finishes): OCR models, object detection, segmentation models, and line detection algorithms
+                to accurately calculate required materials following business rules, providing both linear and area measurements.
+              </p>
+              <p>
+                <span class="font-semibold text-slate-700">Target -</span>
+                <span class="font-semibold text-emerald-600">&gt;90% accuracy</span> for material estimation during takeoff,
+                significantly reducing human error and processing time.
+              </p>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="badge">akaOCR</span>
+              <span class="badge">PaddleOCR</span>
+              <span class="badge">YOLO</span>
+              <span class="badge">OpenCV</span>
+              <span class="badge">Azure ML</span>
+              <span class="badge">Detectron</span>
+              <span class="badge">PyTorch</span>
+              <span class="badge">Flask</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">Linux</span>
+            </div>
+          </div>
+
+          <!-- 2. Sejong Lab -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">AI Researcher & Lab Leader</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Imaging &amp; Intelligent Systems Lab - Sejong AI Building Center</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Seoul, South Korea
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(45,212,191,.1);color:#2dd4bf;border:1px solid rgba(45,212,191,.3);">
+                Sep 2019 - Feb 2024
+              </span>
+            </div>
+
+            <p class="text-sm text-slate-500 italic mb-5">
+              Research and build AI-based intelligent systems for detecting and recognizing abnormal behaviors
+              (5-year, government-funded program).
+            </p>
+
+            <!-- Project 1 -->
+            <div class="proj-card mb-4">
+              <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                      style="background:#2dd4bf;">1</span>
+                Animal Abnormal Behavior Detection
+                <span class="text-xs text-slate-400 font-normal">(2022–2023)</span>
+              </h4>
+              <div class="space-y-1.5 text-sm text-slate-600 leading-relaxed">
+                <p><span class="font-semibold text-slate-700">Problem -</span>
+                  Detection models retrained for one surveillance stream degrade significantly when deployed to another,
+                  and re-annotation of streaming data is tedious and error-prone.
+                </p>
+                <p><span class="font-semibold text-slate-700">Contribution -</span>
+                  Proposed an iterative training framework employing a binary classifier to distinguish true/false
+                  positives from bounding box outputs, enhancing model adaptability without manual relabeling.
+                </p>
+                <p><span class="font-semibold text-slate-700">Result -</span>
+                  <span class="font-semibold text-emerald-600">Accuracy: 0.35 → 0.91 (mAP: 0.74 → 0.99)</span>
+                  in just a few iterative cycles.
+                </p>
+              </div>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                <span class="badge">YOLO</span>
+                <span class="badge">OpenCV</span>
+                <span class="badge">Iterative Training</span>
+                <span class="badge">Binary Classifier</span>
+                <span class="badge">PyTorch</span>
+                <span class="badge">Flask</span>
+                <span class="badge">Linux</span>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="proj-card">
+              <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                      style="background:#38bdf8;">2</span>
+                Human Abnormal Behavior Recognition
+                <span class="text-xs text-slate-400 font-normal">(2019–2024)</span>
+              </h4>
+              <div class="space-y-1.5 text-sm text-slate-600 leading-relaxed">
+                <p><span class="font-semibold text-slate-700">Problem -</span>
+                  Low-light surveillance causes reduced visibility, poor image quality, and absent color information -
+                  making visible-only approaches ineffective. A lightweight real-time system is essential.
+                </p>
+                <p><span class="font-semibold text-slate-700">Contribution -</span>
+                  Built the <strong>MIHAB</strong> dataset (thermal + visible video). Proposed a 3D multimodal feature
+                  fusion technique combining visible and thermal infrared features; contrastive learning was applied
+                  to pre-train the backbone for fine-tuned abnormal-behavior recognition.
+                </p>
+                <p><span class="font-semibold text-slate-700">Result -</span>
+                  <span class="font-semibold text-emerald-600">Recognition accuracy: 92.7%</span>
+                  (vs 85.2% without pre-training). Models deployable on
+                  <strong>Nvidia Jetson Orin Nano</strong> for real-time edge inference.
+                </p>
+              </div>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                <span class="badge">3D CNNs</span>
+                <span class="badge">Contrastive Learning</span>
+                <span class="badge">Thermal Imaging</span>
+                <span class="badge">3D Feature Fusion</span>
+                <span class="badge">Multimodal Dataset</span>
+                <span class="badge">Jetson Orin Nano</span>
+                <span class="badge">PyTorch</span>
+                <span class="badge">OpenCV</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Data Science in Brief -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="120">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Editor &amp; Co-head Content Creator</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Data Science in Brief</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>New York, United States (Remote)
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(129,140,248,.1);color:#818cf8;border:1px solid rgba(129,140,248,.3);">
+                Jun 2019 - Jul 2022
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Dedicated efforts to a non-profit AI / Data Science community focused on facilitating learning and
+              knowledge exchange. Oversaw editorial operations, crafted concise informative articles, organized
+              hands-on Data Science events, and managed relationships with authors, in-house team members,
+              and freelance contributors to foster practical learning experiences across the DS community.
+            </p>
+          </div>
+
+          <!-- 4. Vicohub -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="140">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Lecturer &amp; Teaching Assistant</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Vicohub</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(129,140,248,.1);color:#818cf8;border:1px solid rgba(129,140,248,.3);">
+                Oct 2018 - Sep 2019
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Delivered comprehensive ML and Data Science courses at a specialized AI training center,
+              collaborating with professors from Tan Tao University.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Linear Regression</span>
+              <span class="badge">SVM</span>
+              <span class="badge">Random Forest</span>
+              <span class="badge">PCA</span>
+              <span class="badge">K-Means</span>
+              <span class="badge">Neural Networks</span>
+              <span class="badge">NumPy</span>
+              <span class="badge">Pandas</span>
+            </div>
+          </div>
+
+          <!-- 5. Axon Active -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="160">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Software Engineer</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Axon Active Vietnam</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Ho Chi Minh, Vietnam
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
+                Jun 2016 - Aug 2019
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+              Built and developed outsourcing banking applications for Swiss enterprises
+              (Finform, Axon Fintech).
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 mb-4">
+              <div class="proj-card" style="border-left-color:#38bdf8;">
+                <h4 class="font-bold text-slate-700 text-sm mb-1">Client Onboarding (COB)</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  User-friendly web app for welcoming new banking clients - covering Postfinance,
+                  Hypothekarbank Lenzburg, Berner Kantonalbank. Both mobile &amp; web solutions.
+                </p>
+              </div>
+              <div class="proj-card" style="border-left-color:#38bdf8;">
+                <h4 class="font-bold text-slate-700 text-sm mb-1">Self-Onboarding (SOB)</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  Platform empowering bank employees to enter onboarding data following business rules.
+                  Served Baloise Bank SoBa and Credit Highway.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Java</span>
+              <span class="badge">Spring Framework</span>
+              <span class="badge">NGINX</span>
+              <span class="badge">Postgres</span>
+              <span class="badge">MySQL</span>
+              <span class="badge">Linux</span>
+              <span class="badge">Windows Server</span>
+              <span class="badge">SCRUM Agile</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           EDUCATION
+      ========================================================= -->
+      <section id="education" data-aos="fade-up">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+          <i class="fas fa-graduation-cap text-sky-500"></i>
+          Education
+        </h2>
+
+        <div class="space-y-5">
+
+          <!-- Sejong -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="80">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Master &amp; PhD - Computer Science &amp; Engineering</h3>
+                <p class="font-semibold text-sky-600 mt-0.5">Sejong University</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Seoul, South Korea
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(56,189,248,.1);color:#38bdf8;border:1px solid rgba(56,189,248,.3);">
+                Sep 2019 - Feb 2024
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mb-5">
+              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
+                <div class="text-xl font-black text-sky-600 font-heading">4.3/4.5</div>
+                <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+              </div>
+              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
+                <div class="text-xl font-black text-sky-600 font-heading">TOEFL 107</div>
+                <div class="text-xs text-slate-500 mt-0.5">English Proficiency</div>
+              </div>
+              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
+                <div class="text-xl font-black text-sky-600 font-heading">Full Scholarship</div>
+                <div class="text-xs text-slate-500 mt-0.5">5 Academic Years</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Machine Learning</span>
+              <span class="badge">Computer Vision</span>
+            </div>
+          </div>
+
+          <!-- Tan Tao -->
+          <div class="card p-6 md:p-7" data-aos="fade-up" data-aos-delay="120">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+              <div>
+                <h3 class="text-xl font-bold font-heading text-slate-800">Bachelor - Artificial Intelligence &amp; Computational Science</h3>
+                <p class="font-semibold text-teal-600 mt-0.5">Tan Tao University</p>
+                <p class="text-sm text-slate-500 mt-0.5">
+                  <i class="fas fa-location-dot mr-1"></i>Tay Ninh, Vietnam
+                </p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold shrink-0"
+                    style="background:rgba(45,212,191,.1);color:#2dd4bf;border:1px solid rgba(45,212,191,.3);">
+                Sep 2011 - Sep 2015
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mb-5">
+              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
+                <div class="text-xl font-black text-teal-600 font-heading">3.7/4.0</div>
+                <div class="text-xs text-slate-500 mt-0.5">GPA</div>
+              </div>
+              <div class="text-center p-3.5 rounded-xl col-span-1" style="background:#f8fafc;">
+                <div class="text-base font-black text-teal-600 font-heading leading-tight">IELTS 6.0 · TOEIC 915</div>
+                <div class="text-xs text-slate-500 mt-0.5">English Proficiency</div>
+              </div>
+              <div class="text-center p-3.5 rounded-xl" style="background:#f8fafc;">
+                <div class="text-xl font-black text-teal-600 font-heading">Full Scholarship</div>
+                <div class="text-xs text-slate-500 mt-0.5">4 Academic Years</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Artificial Intelligence</span>
+              <span class="badge">Computational Science</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SKILLS
+      ========================================================= -->
+      <section id="skills" data-aos="fade-up">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+          <i class="fas fa-code text-sky-500"></i>
+          Skills &amp; Technologies
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5">
+
+          <div class="card p-6" data-aos="fade-up" data-aos-delay="60">
+            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
+              <i class="fas fa-brain text-sky-500"></i> AI &amp; Machine Learning
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Machine Learning</span>
+              <span class="badge">Deep Learning</span>
+              <span class="badge">Computer Vision</span>
+              <span class="badge">YOLO</span>
+              <span class="badge">Object Detection</span>
+              <span class="badge">Segmentation</span>
+              <span class="badge">OCR</span>
+              <span class="badge">Contrastive Learning</span>
+              <span class="badge">3D CNNs</span>
+              <span class="badge">Feature Fusion</span>
+              <span class="badge">PyTorch</span>
+              <span class="badge">OpenCV</span>
+              <span class="badge">Detectron</span>
+              <span class="badge">PaddleOCR</span>
+            </div>
+          </div>
+
+          <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
+              <i class="fas fa-terminal text-teal-500"></i> Programming &amp; Dev
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Python</span>
+              <span class="badge">Java</span>
+              <span class="badge">C++</span>
+              <span class="badge">Linux</span>
+              <span class="badge">Flask</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">Spring Framework</span>
+              <span class="badge">NGINX</span>
+              <span class="badge">Postgres</span>
+              <span class="badge">MySQL</span>
+              <span class="badge">NumPy</span>
+              <span class="badge">Pandas</span>
+            </div>
+          </div>
+
+          <div class="card p-6" data-aos="fade-up" data-aos-delay="140">
+            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
+              <i class="fas fa-cloud text-indigo-500"></i> Cloud &amp; Infrastructure
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Azure Machine Learning</span>
+              <span class="badge">Nvidia Jetson Orin Nano</span>
+              <span class="badge">Edge AI</span>
+              <span class="badge">Linux Server</span>
+              <span class="badge">Windows Server</span>
+            </div>
+          </div>
+
+          <div class="card p-6" data-aos="fade-up" data-aos-delay="180">
+            <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2 text-sm">
+              <i class="fas fa-flask text-purple-500"></i> Research &amp; Methodology
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Research Methodology</span>
+              <span class="badge">Dataset Construction</span>
+              <span class="badge">Iterative Training</span>
+              <span class="badge">Model Evaluation</span>
+              <span class="badge">Data Engineering</span>
+              <span class="badge">Problem Solving</span>
+              <span class="badge">SCRUM Agile</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           COURSES
+      ========================================================= -->
+      <section id="courses" data-aos="fade-up">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+          <i class="fas fa-certificate text-sky-500"></i>
+          Courses &amp; Certifications
+        </h2>
+
+        <div class="grid sm:grid-cols-3 gap-5">
+
+          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="60">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                 style="background:rgba(56,189,248,.1);">
+              <i class="fas fa-camera text-sky-500 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-slate-700 mb-1">PyImageSearch Gurus</h3>
+            <p class="text-sky-600 text-xs mb-3">PyImageSearch</p>
+            <span class="text-xs text-slate-400 font-mono">May 2021</span>
+          </div>
+
+          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                 style="background:rgba(45,212,191,.1);">
+              <i class="fas fa-chart-bar text-teal-500 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-slate-700 mb-1">Data Science with Python</h3>
+            <p class="text-sky-600 text-xs mb-3">Vicohub</p>
+            <span class="text-xs text-slate-400 font-mono">Nov 2018</span>
+          </div>
+
+          <div class="card p-6 text-center" data-aos="fade-up" data-aos-delay="140">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                 style="background:rgba(129,140,248,.1);">
+              <i class="fas fa-users text-indigo-500 text-2xl"></i>
+            </div>
+            <h3 class="font-bold text-slate-700 mb-1">Agile Leadership &amp; Fit for Scrum</h3>
+            <p class="text-sky-600 text-xs mb-3">Axon Active Vietnam</p>
+            <span class="text-xs text-slate-400 font-mono">May 2017</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           HOBBIES
+      ========================================================= -->
+      <section id="hobbies" data-aos="fade-up">
+        <h2 class="sec-title text-2xl font-bold text-slate-800 mb-9">
+          <i class="fas fa-heart text-sky-500"></i>
+          Hobbies &amp; Interests
+        </h2>
+
+        <div class="card p-6 md:p-8">
+          <div class="grid grid-cols-3 sm:grid-cols-6 gap-6 text-center">
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="60">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(56,189,248,.1);">
+                <i class="fas fa-book text-sky-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Reading</span>
+            </div>
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="100">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(45,212,191,.1);">
+                <i class="fas fa-music text-teal-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Music</span>
+            </div>
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="140">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(129,140,248,.1);">
+                <i class="fas fa-guitar text-indigo-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Guitar</span>
+            </div>
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="180">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(251,146,60,.1);">
+                <i class="fas fa-person-running text-orange-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Sports</span>
+            </div>
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="220">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(244,63,94,.1);">
+                <i class="fas fa-comments text-rose-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Socializing</span>
+            </div>
+            <div class="flex flex-col items-center gap-2.5" data-aos="zoom-in" data-aos-delay="260">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110"
+                   style="background:rgba(234,179,8,.1);">
+                <i class="fas fa-handshake text-yellow-500 text-xl"></i>
+              </div>
+              <span class="text-xs text-slate-600 font-medium">Community</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-200 pt-8 pb-4 text-center">
+        <p class="text-sm text-slate-400 font-mono">
+          Cuong Tran Dao Huy &middot; 2024 &middot; Built with
+          <span class="text-rose-400">&#9829;</span> using Tailwind CSS
+        </p>
+      </footer>
+
+    </div><!-- /content wrapper -->
+  </main>
+
+</div><!-- /flex root -->
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 550, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+  /* ---- Skill bar animation (triggers on page load after short delay) ---- */
+  setTimeout(() => {
+    document.querySelectorAll('.skill-fill').forEach(el => {
+      el.style.width = el.dataset.w + '%';
+    });
+  }, 400);
+
+  /* ---- Active nav highlight on scroll ---- */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '-10% 0px -60% 0px' });
+
+  sections.forEach(s => io.observe(s));
+
+  /* ---- Smooth scroll ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
 </html>
