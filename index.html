@@ -1118,7 +1118,7 @@
       <!-- Footer -->
       <footer class="border-t border-slate-700/50 pt-8 pb-4 text-center">
         <p class="text-sm text-slate-400 font-mono">
-          Cuong Tran Dao Huy &middot; 2025 &middot; Built with
+          Cuong Tran Dao Huy &middot; <span id="footer-year"></span> &middot; Built with
           <span class="text-rose-400">&#9829;</span> using Tailwind CSS
         </p>
       </footer>
@@ -1132,6 +1132,7 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 550, easing: 'ease-out-cubic', once: true, offset: 50 });
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
   /* Reset AOS-injected transition on stat-cards so hover feels instant */
   document.addEventListener('aos:in', ({ detail }) => {
