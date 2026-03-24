@@ -263,6 +263,20 @@
     .star-block.sub-proj-hover { transition: transform .3s ease, box-shadow .3s ease, border-top-color .25s, border-right-color .25s, border-bottom-color .25s; }
     .star-block.sub-proj-hover:hover { transform: translateY(-4px) scale(1.03) !important; box-shadow: 0 12px 28px rgba(56,189,248,.22) !important; z-index: 1; position: relative; }
 
+    /* ---- Role badges hover ---- */
+    .role-badge {
+      cursor: default;
+      transition: transform .25s ease, background .25s ease,
+                  box-shadow .25s ease, border-color .25s ease;
+    }
+    .role-badge:hover {
+      transform: translateY(-3px) scale(1.06);
+      background: rgba(var(--glow), .22) !important;
+      border-color: rgba(var(--glow), .7) !important;
+      box-shadow: 0 0 14px rgba(var(--glow), .45),
+                  0 4px 16px rgba(var(--glow), .25);
+    }
+
     /* Mobile adjustments */
     @media (max-width: 1023px) {
       #sidebar { position: relative; width: 100%; height: auto; }
@@ -478,16 +492,16 @@
         </div>
 
         <div data-aos="fade-up" data-aos-delay="180" class="mb-6 flex flex-wrap gap-2">
-          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
-                style="background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.3);color:#38bdf8;">
+          <span class="role-badge px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.3);color:#38bdf8;--glow:56,189,248;">
             AI Researcher
           </span>
-          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
-                style="background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.3);color:#2dd4bf;">
+          <span class="role-badge px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.3);color:#2dd4bf;--glow:45,212,191;">
             Senior AI Engineer
           </span>
-          <span class="px-3.5 py-1 rounded-full text-sm font-medium border"
-                style="background:rgba(129,140,248,.1);border-color:rgba(129,140,248,.3);color:#818cf8;">
+          <span class="role-badge px-3.5 py-1 rounded-full text-sm font-medium border"
+                style="background:rgba(129,140,248,.1);border-color:rgba(129,140,248,.3);color:#818cf8;--glow:129,140,248;">
             Data Scientist
           </span>
         </div>
